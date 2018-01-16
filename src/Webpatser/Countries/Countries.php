@@ -14,7 +14,7 @@ class Countries extends Model {
 	 * @var string
 	 * Path to the directory containing countries data.
 	 */
-	protected $countries;
+	protected $countries = [];
 
 	/**
 	 * @var string
@@ -40,7 +40,7 @@ class Countries extends Model {
     protected function getCountries()
     {
         //Get the countries from the JSON file
-        if (sizeof($this->countries) == 0){
+        if (empty($this->countries)){
             $this->countries = json_decode(file_get_contents(__DIR__ . '/Models/countries.json'), true);
         }
 
